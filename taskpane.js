@@ -195,7 +195,8 @@ async function insert(name) {
     const svg = svgFor(name);
     const encoded = encodeBase64(svg);
 
-    const dataUrl = `data:image/svg+xml;base64,${encoded}`;
+    // Pass the base64 image data without the data URL prefix.
+    const dataUrl = encoded;
 
     await new Promise((resolve, reject) => {
       Office.context.document.setSelectedDataAsync(
